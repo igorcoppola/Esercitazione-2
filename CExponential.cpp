@@ -12,8 +12,6 @@ using namespace std;
 /// @brief default constructor
 Exponential::Exponential() {
 
-	cout << "*** Exponential - Default Constructor ***\n\n";
-
 	SetParam(1,0,0);
 	
 }
@@ -24,21 +22,21 @@ Exponential::Exponential() {
 /// @param c coefficient that moltiply the free variable of the exponential function
 Exponential::Exponential(double b, double k, double c)
 {
-    cout << "*** Exponential - Constructor ***\n\n";
+
     SetParam(b, k, c);
 }
 
 /// @brief copy costructor 
 Exponential::Exponential(const Exponential &E)
 {
-    cout << "*** Exponential - Copy Constructor ***\n\n";
+
     SetParam(E.b_coeff, E.k_coeff, E.c_coeff);
 }
 
 /// @brief destructor 
 Exponential::~Exponential()
 {
-    cout << "*** Exponential - Destructor ***\n\n";
+    
 }
 
 /// @brief operator =
@@ -46,7 +44,7 @@ Exponential::~Exponential()
 /// @return reference to the exponential function on the left side of the operator
 Exponential& Exponential::operator=(const Exponential& p)
 {
-    cout << "*** Exponential - Operator = ***\n\n";
+    
     SetParam(p.b_coeff, p.k_coeff, p.c_coeff);
 
     return *this;
@@ -126,7 +124,7 @@ double Exponential::GetValue(double in)
 /// @brief prints the dump of the object
 void Exponential::Dump()
 {
-    cout << "*** Exponential - Dump() ***" << "\n\n";
+
     cout << k_coeff << "*" << b_coeff << "^(" << c_coeff << "x)" << "\n\n"; 
 
 }
@@ -153,7 +151,7 @@ void Exponential::WarningMessage(const char *string)
 /// @return return the exponential function that was obtained by the sum of two exponential function
 Exponential Exponential :: operator+(const Exponential& e1)
 {
-    if(c_coeff != e1.c_coeff || b_coeff != e1.b_coeff)
+    if (c_coeff != e1.c_coeff || b_coeff != e1.b_coeff)
     {
         ErrorMessage("Operator = : Impossible to execute the sum, because exponent coeffs are different (or base coeff). By defaut it will be returned the first exponent that was summed.");
         return *this;
@@ -161,5 +159,5 @@ Exponential Exponential :: operator+(const Exponential& e1)
     Exponential e_res;
     double new_k_coeff = k_coeff + e1.k_coeff;
     e_res.SetParam(b_coeff, new_k_coeff, c_coeff);
-    return e_res; 
+    return e_res;
 }
